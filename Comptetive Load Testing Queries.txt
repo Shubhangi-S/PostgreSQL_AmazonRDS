@@ -1,0 +1,27 @@
+QUERY 1:
+
+do $$
+declare 
+   counter integer := 0;
+   name VARCHAR(100);
+begin
+   while counter = 0 loop
+      name = (SELECT "TransmissionType" from "Messages" WHERE "ID" =1);
+	  --counter := counter + 1;
+   end loop;
+end$$;
+
+QUERY 2:
+
+do $$
+declare 
+   counter integer := 0;
+   name VARCHAR(100);
+   id_nums bigint[];
+begin
+   while counter < 100 loop
+      id_nums := ARRAY(SELECT "TransmissionType" from "Messages");
+	  counter := counter + 1;
+   end loop;
+end$$;
+
